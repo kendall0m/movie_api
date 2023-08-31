@@ -1,7 +1,8 @@
-const express = require('express');
-const morgan = require ('morgan');
-const fs = require('fs'); // import built in node modules fs and path 
-const app = express();
+const express = require('express'),
+ morgan = require ('morgan'),
+ fs = require('fs'), // import built in node modules fs and path 
+ app = express(),
+ path = require('path');
 
 const topMovies = [
     {
@@ -45,15 +46,29 @@ const topMovies = [
         director: 'Ethan Coen',
     }
 ]
+
+
+app.get('/movies', (req, res) => {
+    res.json(topMovies);
+});
+app.get("/", (req, res) => {
+    let responseText = "Hello world!";
+    res.send(responseText);
+});
+
+app.use(express.static('public'));
+
 // create a write stream (in append mode)
 // a ‘log.txt’ file is created in root directory
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
 // setup the logger
 app.use(morgan('combined', {stream: accessLogStream}));
 
-app.get('/movies', (req, res) => {
-  res.json(topMovies);
-});
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+  });
+
 app.listen(8080, () => {
     console.log('Your app is listening on port 8080.');
-  });
+});
