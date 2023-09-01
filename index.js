@@ -1,8 +1,8 @@
-const express = require('express'),
- morgan = require ('morgan'),
- fs = require('fs'), // import built in node modules fs and path 
- app = express(),
- path = require('path');
+const express = require('express');
+const morgan = require ('morgan');
+const fs = require('fs'); // import built in node modules fs and path 
+const app = express();
+const path = require('path');
 
 const topMovies = [
     {
