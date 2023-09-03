@@ -50,3 +50,11 @@ URL: /server.js
 Timestamp: Wed Aug 23 2023 10:34:30 GMT-0400 (Eastern Daylight Time)
 
 ::1 - - [31/Aug/2023:15:36:05 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::1 - - [01/Sep/2023:15:35:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [03/Sep/2023:16:10:09 +0000] "GET /DevMgmt/ProductConfigDyn.xml HTTP/1.1" 404 167 "-" "-"
+::ffff:127.0.0.1 - - [03/Sep/2023:16:10:10 +0000] "GET /DevMgmt/ProductStatusDyn.xml HTTP/1.1" 404 167 "-" "-"
+::ffff:127.0.0.1 - - [03/Sep/2023:16:10:10 +0000] "GET /DevMgmt/ConsumableConfigDyn.xml HTTP/1.1" 404 170 "-" "-"
+::ffff:127.0.0.1 - - [03/Sep/2023:16:10:10 +0000] "GET /DevMgmt/ProductUsageDyn.xml HTTP/1.1" 404 166 "-" "-"
+::ffff:127.0.0.1 - - [03/Sep/2023:16:10:10 +0000] "GET /DevMgmt/ProductUsageDataDyn.xml HTTP/1.1" 404 170 "-" "-"
+::ffff:127.0.0.1 - - [03/Sep/2023:16:10:11 +0000] "GET /DevMgmt/ProductLogsDyn.xml HTTP/1.1" 404 165 "-" "-"
+::1 - - [03/Sep/2023:17:23:25 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
