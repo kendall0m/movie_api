@@ -62,8 +62,8 @@ app.use(express.static('public'));
 // a ‘log.txt’ file is created in root directory
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
 // setup the logger
-app.use(morgan('common'));
-//app.use(morgan('combined', {stream: accessLogStream}));
+// app.use(morgan('common'));
+app.use(morgan('combined', {stream: accessLogStream}));
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
