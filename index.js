@@ -46,7 +46,7 @@ const topMovies = [
         director: 'Ethan Coen',
     }
 ]
-
+app.use(morgan('common'));
 
 app.get('/movies', (req, res) => {
     res.json(topMovies);
