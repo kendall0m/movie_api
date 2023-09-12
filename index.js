@@ -48,13 +48,17 @@ const topMovies = [
 ]
 app.use(morgan('common'));
 
+
+//gets list of movies 
 app.get('/movies', (req, res) => {
     res.json(topMovies);
 });
+
 app.get("/", (req, res) => {
     let responseText = "Hello world!";
     res.send(responseText);
 });
+
 
 app.use(express.static('public'));
 
