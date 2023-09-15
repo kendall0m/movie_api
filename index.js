@@ -3,62 +3,221 @@ const morgan = require ('morgan');
 const fs = require('fs'); // import built in node modules fs and path 
 const app = express();
 const path = require('path');
+const uuid = require ('uuid');
+const bodyParser = require ('body-parser');
 
-const topMovies = [
+app.use(bodyParser.json());
+
+const movies = [
     {
         title: 'The Hunt for Red October',
-        director: 'John McTiernan',
+        director: {
+            name: 'John McTiernan',
+            bio: 'directed The Hunt for Red October',
+            birthYear: '1951',
+            deathYear: 'n/a',
+        },
+        description: 'Based on a Tom Clancy novel.',
+        genre: 'drama',
+        image: '',
     },
     {
         title: 'The Iron Giant',
-        director: 'Brad Bird',
+        director: {
+            name: 'Brad Bird',
+            bio: 'directed The Iron Giant',
+            birthYear: '1957',
+            deathYear: 'n/a',
+        },
+        description: 'A boy meets an iron giant.',
+        genre: 'adventure',
+        image: '',
     },
     {
         title: 'The Philadelphia Story',
-        director: 'George Cukor',
+        director: {
+            name: 'George Cukor',
+            bio: 'directed The Philadelphia Story.',
+            birthYear: '1899',
+            deathYear: '1983',
+        },
+        description: 'Katharine Hepburn is in it.',
+        genre: 'comedy',
+        image: '',
     },
     {
         title: 'The Best Years of Our Lives',
-        director: 'William Wyler',
+        director: {
+            name: 'William Wyler',
+            bio: 'directed The Best Years of Our Lives',
+            birthYear: '1902',
+            deathYear: '1981',
+        },
+        description: 'Three war veterans face difficulties.',
+        genre: 'drama',
+        image: '',
     },
     {
         title: 'The Caine Mutiny',
-        director: 'Edward Dmytryk',
+        director: {
+            name: 'Edward Dmytryk',
+            bio: 'directed The Caine Mutiny',
+            birthYear: '1908',
+            deathYear: '1999',
+        },
+        description: 'Takes place during World War II.',
+        genre: 'suspense',
+        image: '',
     },
     {
         title: 'The Godfather',
-        director: 'Francis Ford Coppola',
+        director: {
+            name: 'Francis Ford Coppola',
+            bio: 'directed The Godfather',
+            birthYear: '1939',
+            deathYear: 'n/a',
+        },
+        description: 'Involves the mafia I think.',
+        genre: 'drama',
+        image: '',
     },
     {
         title: 'Seabiscuit',
-        director: 'Gary Ross',
+        director: {
+            name: 'Gary Ross',
+            bio: 'directed Seabiscuit',
+            birthYear: '1956',
+            deathYear: 'n/a',
+        },
+        description: 'About a horse.',
+        genre: 'horse',
+        image: '',
     },
     {
         title: 'Pulp Fiction',
-        director: 'Quentin Tarantino',
+        director: {
+            name: 'Quentin Tarantino',
+            bio: 'directed Pulp Fiction',
+            birthYear: '1963',
+            deathYear: 'n/a',
+        },
+        description: 'Uma Thurman is in this!',
+        genre: 'drama',
+        image: '',
     },
     {
         title: 'Secretariat',
-        director: 'Randall Wallace',
+        director: {
+            name: 'Randall Wallace',
+            bio: 'directed Secretariat',
+            birthYear: '1949',
+            deathYear: 'n/a',
+        },
+        description: 'About a horse.',
+        genre: 'horse',
+        image: '',
     },
     {
         title: 'True Grit',
-        director: 'Ethan Coen',
+        director: {
+            name: 'Ethan Coen',
+            bio: 'directed True Grit',
+            birthYear: '1957',
+            deathYear: 'n/a',
+        },
+        description: 'A girl goes on a quest.',
+        genre: 'drama',
+        image: '',
     }
 ]
 app.use(morgan('common'));
 
-
-//gets list of movies 
-app.get('/movies', (req, res) => {
-    res.json(topMovies);
-});
-
 app.get("/", (req, res) => {
-    let responseText = "Hello world!";
+    let responseText = "Hello world! Welcome to my Movie API!?";
     res.send(responseText);
 });
 
+// gets list of movies 
+app.get('/movies', (req, res) => {
+    res.json(movies);
+});
+
+// return data about a movie by title
+app.get('/movies/:title', (req, res) => {
+    res.json(movies.find((movie) =>
+    { return movie.title === req.params.title }));
+});
+
+// return data about a genre by title
+
+
+app.get('/movies/genre/:genre', (req,res) => {
+    res.json(movies.filter((movie) =>
+    { return movie.genre === req.params.genre }));
+});
+
+// return data about a director by name
+app.get('/movies/directors/:director', (req,res) => {
+    res.json(movies.find((movie) =>
+    {if (movie.director.name === req.params.director){
+        let directorInfo = Object.keys(movie.director);
+
+        return directorInfo;
+    }}));
+});
+
+// allow new users to register 
+app.post('/users', (req, res) => {
+    let newUser = req.body;
+
+    if (!newUser.name) {
+        const message = 'Missing name in request body';
+        res.status(400).send(message);
+    }   else {
+        newUser.id = uuid.v4();
+        users.push(newUser);
+        res.status(201).send(newUser);
+    }
+});
+
+// allow users to update their username
+app.put('/users/:id/', (req, res) => {
+    let user = users.find((user) => { return user.id === req.params.id});
+
+    if (user) {
+    user.username
+    }
+});
+
+// allow users to add a  movie to their list of favorites
+app.put('/movies/:id/favorites/:favemovie', (req, res) => {
+    let user = users.find((user) => { return user.id === req.params.id});
+
+    if(user) {
+        user.faveList.push(req.params.faveMovie);
+    }
+});
+
+
+// allow users to remove a movie from their list of favorites
+app.delete('/movies/:id/deletefavorites/:favemovie', (req, res) => {
+    let user = users.find((user) => {return user.id === req.params.id});
+
+    if (user) {
+        users = user.faveList.filter((obj) => {return obj.faveMovie !== req.params.faveMovie});
+        res.status(201).send('user ' + req.params.faveMovie + ' was deleted.');
+    }
+});
+
+// allow existing users to deregister
+app.delete('/users/:id/deregister', (req, res) => {
+    let user = users.find((user) => {return user.id === req.params.id});
+
+    if (user) {
+        users = users.filter((obj) => {return obj.id !== req.params.id});
+        res.status(201).send('user ' + req.params.id + ' was deleted.');
+    }
+});
 
 app.use(express.static('public'));
 
