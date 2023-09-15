@@ -6,67 +6,107 @@
     <title>Movie API</title>
   </head>
   <body>
+
     <div class="container">
       <table class="table" style="width:100%">
         <thead>
           <tr>
-            <th class="column1">URL endpoint</th>
-            <th class="column2">Request Method</th>
-            <th class="column3">Response</th>
+            <th>Request</th>
+            <th>URL Endpoint</th>
+            <th>Request Method</th>
+            <th>Request Body Format</th>
+            <th>Response Body Data Format</th>
           </tr>
         </thead>
         <tbody>
 
           <tr>
+            <td>return a list of all movies to the user</td>
             <td>/movies</td>
             <td>GET</td>
-            <td>return a JSON object of all movies</td>
+            <td>none</td>
+            <td>return a JSON object holding data of all movies</td>
           </tr>
 
           <tr>
+            <td>return data about a single movie by title to the user</td>
             <td>/movies/:title</td>
             <td>GET</td>
+            <td>none</td>
             <td>return a JSON object holding data about a single movie by title</td>
           </tr>
 
           <tr>
+            <td>return data about a genre by name</td>
             <td>/movies/genre/:genreName</td>
             <td>GET</td>
+            <td>none</td>
             <td>return a JSON object holding data about a genre by genre name</td>
             </tr>
 
           <tr>
+            <td>return data about a director by name</td>
             <td>/movies/directors/:directorName</td>
             <td>GET</td>
+            <td>none</td>
             <td>return a JSON object holding data of a director by name</td>
           </tr>
 
           <tr>
+            <td>allow new users to register</td>
             <td>/users</td>
             <td>POST</td>
+            <td>a JSON object holding data about the user to add, structured like: 
+              <code>
+                {
+                  username: "paulinagomez",
+                  favorites: {
+                    Pulp Fiction,
+                    True Grit
+                  }
+                }
+              </code></td>
             <td>allow new users to register; responds with a test message indicating successfully signing up</td>
           </tr>
 
           <tr>
+            <td>allow users to update their username</td>
             <td>/users/:id/</td>
             <td>PUT</td>
+            <td>a JSON object holding data about the user id being changed, structured like:
+              <code>
+                {
+                  username: "pgomez1998",
+                  favorites: {
+                    Pulp Fiction,
+                    True Grit
+                  }
+                }
+              </code></td>
             <td>allow users to update their username; return a message indicating the username was successfully changed</td>
           </tr>
+
           <tr>
+            <td>allow users to add a movie to their list of favorites</td>
             <td>/users/:id/:movieTitle</td>
             <td>POST</td>
+            <td>none</td>
             <td>allow users to add a movie to their favorites list; returns a message whether the addition was successful</td>
           </tr>
 
           <tr>
+            <td>allow users to remove a movie from their list of favorites</td>
             <td>/users/:id/:movieTitle</td>
             <td>DELETE</td>
+            <td>none</td>
             <td>allow users to remove a movie from their favorites list; returns a message whether the removal was successful</td>
           </tr>
 
           <tr>
+            <td>allow existing users to deregister</td>
             <td>/users/:id</td>
             <td>DELETE</td>
+            <td>none</td>
             <td>allow existing users to deregister; return a message confirming the account was deleted</td>
           </tr>
 
