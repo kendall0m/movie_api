@@ -129,7 +129,33 @@ const movies = [
         genre: 'drama',
         image: '',
     }
-]
+];
+
+let users = [
+    {
+        id: '1A',
+        username: 'Gale',
+        faveList: {
+            faveMovie1: '',
+        },
+    },
+
+    {
+        id: '2B',
+        username: 'Astarion',
+        faveList: {
+            faveMovie1: '',
+        },
+    },
+    {
+        id: '3C',
+        username: 'ShadowHeart',
+        faveList: {
+            faveMovie1: 'Seabiscuit',
+        }
+    }
+];
+
 app.use(morgan('common'));
 
 app.get("/", (req, res) => {
@@ -158,44 +184,51 @@ app.get('/movies/genre/:genre', (req,res) => {
 
 // return data about a director by name
 app.get('/movies/directors/:director', (req,res) => {
-    res.json(movies.find((movie) =>
-    {if (movie.director.name === req.params.director){
-        let directorInfo = Object.keys(movie.director);
+    res.json(movies.find((movie) => {
 
-        return directorInfo;
-    }}));
+        return movie.director.name === req.params.director;
+
+    }));
 });
 
 // allow new users to register 
 app.post('/users', (req, res) => {
     let newUser = req.body;
 
-    if (!newUser.name) {
-        const message = 'Missing name in request body';
+    if (!newUser.username) {
+        const message = 'Missing a username in request body';
         res.status(400).send(message);
     }   else {
         newUser.id = uuid.v4();
         users.push(newUser);
         res.status(201).send(newUser);
     }
+
 });
 
 // allow users to update their username
-app.put('/users/:id/', (req, res) => {
-    let user = users.find((user) => { return user.id === req.params.id});
+app.put('/users/:oldName/:newName', (req, res) => {
+    let user = users.find((user) => { return user.username === req.params.oldName});
 
     if (user) {
-    user.username
+        user.username = req.params.newName;
+        res.status(201).send('Your username was updated to ' + req.params.newName);
+    } else {
+        res.status(404).send('This user does not exist.');
     }
+
 });
 
 // allow users to add a  movie to their list of favorites
-app.put('/movies/:id/favorites/:favemovie', (req, res) => {
+app.post('/movies/:id/favorites/:favemovie', (req, res) => {
     let user = users.find((user) => { return user.id === req.params.id});
-
-    if(user) {
-        user.faveList.push(req.params.faveMovie);
+    if(user){
+        user.faveList.faveMovie1 = req.params.favemovie;
+        res.status(201).send("Favorite movie was added to your list!");
+    }else{
+        res.status(404).send("This user does not exist.");
     }
+
 });
 
 
@@ -204,8 +237,10 @@ app.delete('/movies/:id/deletefavorites/:favemovie', (req, res) => {
     let user = users.find((user) => {return user.id === req.params.id});
 
     if (user) {
-        users = user.faveList.filter((obj) => {return obj.faveMovie !== req.params.faveMovie});
-        res.status(201).send('user ' + req.params.faveMovie + ' was deleted.');
+        user.faveList.favemovie1 = '';
+        res.status(201).send('The movie was deleted.');
+    }else{
+        res.status(404).send('This is not a movie in the database.')
     }
 });
 
