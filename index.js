@@ -156,6 +156,21 @@ let users = [
     }
 ];
 
+let genres = [
+    {
+        genre: 'horse',
+        description: 'horse movies are about horses in some way. this is a genre i made up for humor.',
+    },
+    {
+        genre: 'drama',
+        description: 'drama movies are really dramatic.',
+    },
+    {
+        genre: 'suspense',
+        description: 'suspense movies are movies that have you on the edge of your seat'
+    },
+]
+
 app.use(morgan('common'));
 
 app.get("/", (req, res) => {
@@ -178,8 +193,8 @@ app.get('/movies/:title', (req, res) => {
 
 
 app.get('/movies/genre/:genre', (req,res) => {
-    res.json(movies.filter((movie) =>
-    { return movie.genre === req.params.genre }));
+    res.json(genres.filter((genre) =>
+    { return genre.genre === req.params.genre }));
 });
 
 // return data about a director by name
