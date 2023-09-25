@@ -10,15 +10,15 @@ app.use(bodyParser.json());
 
 const movies = [
     {
-        title: 'The Hunt for Red October',
+        title: 'Spirited Away',
         director: {
-            name: 'John McTiernan',
-            bio: 'directed The Hunt for Red October',
-            birthYear: '1951',
+            name: 'Hayao Miyazaki',
+            bio: 'Hayao Miyazaki was born on January 5, 1941, in Tokyo City, Empire of Japan, the second of four sons.	',
+            birthYear: '1941',
             deathYear: 'n/a',
         },
-        description: 'Based on a Tom Clancy novel.',
-        genre: 'drama',
+        description: '10-year-old Chihiro finds herself in a mysterious world after her parents are turned into pigs.',
+        genre: 'Fantasy',
         image: '',
     },
     {
@@ -30,144 +30,206 @@ const movies = [
             deathYear: 'n/a',
         },
         description: 'A boy meets an iron giant.',
-        genre: 'adventure',
+        genre: 'Animation',
         image: '',
     },
     {
-        title: 'The Philadelphia Story',
+        title: 'My Neighbor Totoro',
         director: {
-            name: 'George Cukor',
-            bio: 'directed The Philadelphia Story.',
-            birthYear: '1899',
-            deathYear: '1983',
-        },
-        description: 'Katharine Hepburn is in it.',
-        genre: 'comedy',
-        image: '',
-    },
-    {
-        title: 'The Best Years of Our Lives',
-        director: {
-            name: 'William Wyler',
-            bio: 'directed The Best Years of Our Lives',
-            birthYear: '1902',
-            deathYear: '1981',
-        },
-        description: 'Three war veterans face difficulties.',
-        genre: 'drama',
-        image: '',
-    },
-    {
-        title: 'The Caine Mutiny',
-        director: {
-            name: 'Edward Dmytryk',
-            bio: 'directed The Caine Mutiny',
-            birthYear: '1908',
-            deathYear: '1999',
-        },
-        description: 'Takes place during World War II.',
-        genre: 'suspense',
-        image: '',
-    },
-    {
-        title: 'The Godfather',
-        director: {
-            name: 'Francis Ford Coppola',
-            bio: 'directed The Godfather',
-            birthYear: '1939',
+            name: 'Hayao Miyazaki',
+            bio: 'Hayao Miyazaki was born on January 5, 1941, in Tokyo City, Empire of Japan, the second of four sons.	',
+            birthYear: '1941',
             deathYear: 'n/a',
         },
-        description: 'Involves the mafia I think.',
-        genre: 'drama',
+        description: 'This acclaimed animated tale follows schoolgirl Satsuke and her younger sister, Mei.',
+        genre: 'Fantasy',
         image: '',
     },
     {
-        title: 'Seabiscuit',
+        title: 'Ponyo',
         director: {
-            name: 'Gary Ross',
-            bio: 'directed Seabiscuit',
-            birthYear: '1956',
-            deathYear: 'n/a',
+            name: 'Hayao Miyazaki',
+            bio: 'Hayao Miyazaki was born on January 5, 1941, in Tokyo City, Empire of Japan, the second of four sons.	',
+            birthYear: '1941',
+            deathYear: '--',
         },
-        description: 'About a horse.',
-        genre: 'horse',
+        description: 'Three war veterans face A goldfish princess encounters a human boy.',
+        genre: 'Fantasy',
         image: '',
     },
     {
-        title: 'Pulp Fiction',
+        title: 'Detective Pikachu',
         director: {
-            name: 'Quentin Tarantino',
-            bio: 'directed Pulp Fiction',
-            birthYear: '1963',
-            deathYear: 'n/a',
+            name: 'Rob Letterman',
+            bio: 'Robert Thomas Letterman is an American film director and screenwriter.',
+            birthYear: '1970',
+            deathYear: '--',
         },
-        description: 'Uma Thurman is in this!',
-        genre: 'drama',
+        description: 'Pikachu helps a boy find his missing father.	',
+        genre: 'Mystery',
         image: '',
     },
     {
-        title: 'Secretariat',
+        title: 'Big Fish',
         director: {
-            name: 'Randall Wallace',
-            bio: 'directed Secretariat',
-            birthYear: '1949',
-            deathYear: 'n/a',
+            name: 'Tim Burton',
+            bio: 'Timothy Walter Burton is an American filmmaker, animator, and artist.',
+            birthYear: '1958',
+            deathYear: '--',
         },
-        description: 'About a horse.',
-        genre: 'horse',
+        description: 'A man recounts fantastical tales of his life.	',
+        genre: 'Comedy',
         image: '',
     },
     {
-        title: 'True Grit',
+        title: 'The Secret World of Arrietty',
         director: {
-            name: 'Ethan Coen',
-            bio: 'directed True Grit',
-            birthYear: '1957',
+            name: 'Hiromasa Yonebayashi',
+            bio: 'Hiromasa Yonebayashi, nicknamed Maro, is a Japanese animator and director, formerly for Studio Ghibli.	',
+            birthYear: '1973',
             deathYear: 'n/a',
         },
-        description: 'A girl goes on a quest.',
-        genre: 'drama',
+        description: 'Arrietty, a tiny teenager, lives with her parents in the recesses of a suburban home, unbeknown to the homeowner and housekeeper.',
+        genre: 'Fantasy',
+        image: '',
+    },
+    {
+        title: 'The Sound of Music	',
+        director: {
+            name: 'Robert Wise	',
+            bio: 'Robert Earl Wise was an American film director, producer, and editor.	',
+            birthYear: '1914',
+            deathYear: '2005',
+        },
+        description: 'Julie Andrews plays the role of Maria, the tomboyish postulant at an Austrian abbey who becomes a governess in the home of a widowed naval captain with seven children, and brings a new love of life and music into the home.	',
+        genre: 'Musical',
+        image: '',
+    },
+    {
+        title: 'Princess Mononoke',
+        director: {
+            name: 'Hayao Miyazaki',
+            bio: 'Hayao Miyazaki was born on January 5, 1941, in Tokyo City, Empire of Japan, the second of four sons.	',
+            birthYear: '1941',
+            deathYear: '--',
+        },
+        description: 'In the 14th century, the harmony that humans, animals and gods have enjoyed begins to crumble. The protagonist, young Ashitaka - infected by an animal attack, seeks a cure from the deer-like god Shishigami.	',
+        genre: 'Fantasy',
+        image: '',
+    },
+    {
+        title: 'Sailor Moon Eternal	',
+        director: {
+            name: 'Chiaki Kon',
+            bio: 'Chiaki Kon is a Japanese anime director. She started her career in 1998 after joining Pierrot.	',
+            birthYear: 'unknown',
+            deathYear: '--',
+        },
+        description: 'When a dark power enshrouds the Earth after a total solar eclipse, the scattered Sailor Guardians must reunite to bring light back into the world.	',
+        genre: 'Animation',
         image: '',
     }
+];
+
+let directors = [
+    {
+        name: 'Hayao Miyazaki',
+        bio: 'Hayao Miyazaki was born on January 5, 1941, in Tokyo City, Empire of Japan, the second of four sons.',
+        birthYear: '1941',
+        deathYear: 'n/a',
+    },
+    {
+        name: 'Rob Letterman',
+        bio: 'Robert Thomas Letterman is an American film director and screenwriter.',
+        birthYear: '1970',
+        deathYear: '--',
+    },
+    {
+        name: 'Tim Burton',
+        bio: 'Timothy Walter Burton is an American filmmaker, animator, and artist.',
+        birthYear: '1958',
+        deathYear: '--',
+    },
+    {
+        name: 'Hiromasa Yonebayashi',
+        bio: 'Hiromasa Yonebayashi, nicknamed Maro, is a Japanese animator and director, formerly for Studio Ghibli.	',
+        birthYear: '1973',
+        deathYear: 'n/a',
+    },
+    {
+        name: 'Robert Wise	',
+        bio: 'Robert Earl Wise was an American film director, producer, and editor.	',
+        birthYear: '1914',
+        deathYear: '2005',
+    },
+    {
+        name: 'Brad Bird',
+        bio: 'directed The Iron Giant',
+        birthYear: '1957',
+        deathYear: 'n/a',
+    },
 ];
 
 let users = [
     {
-        id: '1A',
-        username: 'Gale',
+        id: '1',
+        username: 'Astarion',
+        password: 'secretvampire666',
+        email: 'amethystartefact@gmail.com',
+        birthDate: '12/23/1460',
+        faveList: {
+            faveMovie1: 'My Neighbor Totoro',
+            faveMovie2: 'The Sound of Music',
+        },
+    },
+    {
+        id: '2',
+        username: 'Karlach',
+        password: 'n0tam0nster',
+        email: 'flamechest@gmail.com',
+        birthDate: '06/05/1464',
+        faveList: {
+            faveMovie1: '',
+        },
+    },
+    {
+        id: '3',
+        username: 'Shadowheart',
+        password: 'trustno1',
+        email: 'sharsfavoriteprincess@gmail.com',
+        birthDate: '09/15/1466',
         faveList: {
             faveMovie1: '',
         },
     },
 
-    {
-        id: '2B',
-        username: 'Astarion',
-        faveList: {
-            faveMovie1: '',
-        },
-    },
-    {
-        id: '3C',
-        username: 'ShadowHeart',
-        faveList: {
-            faveMovie1: 'Seabiscuit',
-        }
-    }
 ];
 
 let genres = [
     {
-        genre: 'horse',
-        description: 'horse movies are about horses in some way. this is a genre i made up for humor.',
+        id: '1',
+        genre: 'Fantasy',
+        description: 'Fantasy is a genre of speculative fiction involving magical elements, typically set in a fictional universe and usually inspired by mythology or folklore.',
     },
     {
-        genre: 'drama',
-        description: 'drama movies are really dramatic.',
+        id: '2',
+        genre: 'Mystery',
+        description: 'Mystery is a fiction genre where the nature of an event, usually a murder or other crime, remains mysterious until the end of the story.',
     },
     {
-        genre: 'suspense',
-        description: 'suspense movies are movies that have you on the edge of your seat'
+        id: '3',
+        genre: 'Comedy',
+        description: 'Comedy is a genre of fiction that consists of discourses or works intended to be humorous or amusing by inducing laughter.',
+    },
+    {
+        id: '4',
+        genre: 'Musical',
+        description: 'Musical film is a film genre in which songs by the characters are interwoven into the narrative, sometimes accompanied by dancing.',
+    },
+    {
+        id: '5',
+        genre: 'Animation',
+        description: 'Animation is the method that encompasses myriad filmmaking techniques, by which still images are manipulated to create moving images.',
     },
 ]
 
@@ -199,9 +261,9 @@ app.get('/movies/genre/:genre', (req,res) => {
 
 // return data about a director by name
 app.get('/movies/directors/:director', (req,res) => {
-    res.json(movies.find((movie) => {
+    res.json(directors.find((director) => {
 
-        return movie.director.name === req.params.director;
+        return director.name === req.params.director;
 
     }));
 });
@@ -235,7 +297,7 @@ app.put('/users/:oldName/:newName', (req, res) => {
 });
 
 // allow users to add a  movie to their list of favorites
-app.post('/movies/:id/favorites/:favemovie', (req, res) => {
+app.post('/movies/:username/favorites/:favemovie', (req, res) => {
     let user = users.find((user) => { return user.id === req.params.id});
     if(user){
         user.faveList.faveMovie1 = req.params.favemovie;
@@ -248,7 +310,7 @@ app.post('/movies/:id/favorites/:favemovie', (req, res) => {
 
 
 // allow users to remove a movie from their list of favorites
-app.delete('/movies/:id/deletefavorites/:favemovie', (req, res) => {
+app.delete('/movies/:username/deletefavorites/:favemovie', (req, res) => {
     let user = users.find((user) => {return user.id === req.params.id});
 
     if (user) {
@@ -260,7 +322,7 @@ app.delete('/movies/:id/deletefavorites/:favemovie', (req, res) => {
 });
 
 // allow existing users to deregister
-app.delete('/users/:id/deregister', (req, res) => {
+app.delete('/users/:username/deregister', (req, res) => {
     let user = users.find((user) => {return user.id === req.params.id});
 
     if (user) {
