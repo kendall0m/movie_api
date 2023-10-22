@@ -60,11 +60,10 @@
             <td>a JSON object holding data about the user to add, structured like: 
               <code>
                 {
-                  username: "paulinagomez",
-                  favorites: {
-                    Pulp Fiction,
-                    True Grit
-                  }
+                "Username": "Shadowheart",
+                "Password": "password1",
+                "Email": "sharsprincess@baldur.com",
+                "Birthday": "09/15/1466"
                 }
               </code></td>
             <td>allow new users to register; responds with a test message indicating successfully signing up</td>
@@ -77,12 +76,11 @@
             <td>a JSON object holding data about the user id being changed, structured like:
               <code>
                 {
-                  username: "pgomez1998",
-                  favorites: {
-                    Pulp Fiction,
-                    True Grit
+                  "Username": "Shadowheart",
+                  "Password": "password1",
+                  "Email": "sharsprincess@baldur.com",
+                  "Birthday": "09/15/1466"
                   }
-                }
               </code></td>
             <td>allow users to update their username; return a message indicating the username was successfully changed</td>
           </tr>
