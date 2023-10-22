@@ -7,11 +7,13 @@ const express = require('express');
 const morgan = require ('morgan');
 const fs = require('fs'); // import built in node modules fs and path 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const path = require('path');
 const uuid = require ('uuid');
-const bodyParser = require ('body-parser');
+// const bodyParser = require ('body-parser');
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 
 
@@ -98,7 +100,7 @@ app.get('/movies/directors/:Director', async (req,res) => {
   Email: String,
   Birthday: Date
 }*/
-app.post('/users', async (req, res) => {
+app.post('/newuser', async (req, res) => {
     await Users.findOne({ Username: req.body.Username })
       .then((user) => {
         if (user) {
@@ -155,9 +157,9 @@ app.put('/users/:Username', async (req, res) => {
 });
 
 // Add a movie to a user's list of favorites
-app.post('/users/:Username/movies/:Title', async (req, res) => {
+app.post('/users/:Username/movies/:MovieID', async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.Username }, {
-     $push: { FavoriteMovies: req.params.Title }
+     $push: { FavoriteMovies: req.params.MovieID }
    },
    { new: true }) // This line makes sure that the updated document is returned
   .then((updatedUser) => {
@@ -171,25 +173,30 @@ app.post('/users/:Username/movies/:Title', async (req, res) => {
 
 
 // allow users to remove a movie from their list of favorites
-app.delete('/movies/:username/deletefavorites/:favemovie', (req, res) => {
-    let user = users.find((user) => {return user.id === req.params.id});
-
-    if (user) {
-        user.faveList.favemovie1 = '';
-        res.status(201).send('The movie was deleted.');
-    }else{
-        res.status(404).send('This is not a movie in the database.')
+app.delete('/users/:Username/:MovieID', async (req, res) => {
+  await Movies.findOneAndRemove({ Title: req.params.MovieID }).then((movies) => {
+    if (!movies) {
+      res.status(400).send(req.params.MovieID + ' was not found');
+    } else {
+      res.status(200).send(req.params.MovieID + ' was deleted');
     }
+  });
 });
 
-// allow existing users to deregister
-app.delete('/users/:username/deregister', (req, res) => {
-    let user = users.find((user) => {return user.id === req.params.id});
-
-    if (user) {
-        users = users.filter((obj) => {return obj.id !== req.params.id});
-        res.status(201).send('user ' + req.params.id + ' was deleted.');
-    }
+// Delete a user by username
+app.delete('/deleteuser/:Username', async (req, res) => {
+  await Users.findOneAndRemove({ Username: req.params.Username })
+    .then((user) => {
+      if (!user) {
+        res.status(400).send(req.params.Username + ' was not found');
+      } else {
+        res.status(200).send(req.params.Username + ' was deleted.');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 app.use(express.static('public'));
