@@ -175,7 +175,7 @@ app.post('/users/:Username/movies/:MovieID', async (req, res) => {
 // allow users to remove a movie from their list of favorites
 app.delete('/users/:Username/:MovieID', async (req, res) => {
   await Movies.findOneAndRemove({ Title: req.params.MovieID }).then((movies) => {
-    if (!movies) {
+    if (movies) {
       res.status(400).send(req.params.MovieID + ' was not found');
     } else {
       res.status(200).send(req.params.MovieID + ' was deleted');
