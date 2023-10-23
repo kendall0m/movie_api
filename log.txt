@@ -213,3 +213,7 @@ Timestamp: Wed Aug 23 2023 10:34:30 GMT-0400 (Eastern Daylight Time)
 ::1 - - [22/Oct/2023:18:54:55 +0000] "DELETE /users/Shadowheart/Ponyo HTTP/1.1" 404 165 "-" "PostmanRuntime/7.34.0"
 ::1 - - [22/Oct/2023:18:55:50 +0000] "DELETE /users/Shadowheart/651ec0dba124bedfad0338d5 HTTP/1.1" 404 184 "-" "PostmanRuntime/7.34.0"
 ::1 - - [22/Oct/2023:18:56:15 +0000] "DELETE /users/Shadowheart/651ec0dba124bedfad0338d5 HTTP/1.1" 404 184 "-" "PostmanRuntime/7.34.0"
+::1 - - [23/Oct/2023:17:34:37 +0000] "GET /login?Username=Kendall&Password=tav123 HTTP/1.1" 404 144 "-" "PostmanRuntime/7.34.0"
+::1 - - [23/Oct/2023:17:34:44 +0000] "GET /login?Username=kendall&Password=tav123 HTTP/1.1" 404 144 "-" "PostmanRuntime/7.34.0"
+::1 - - [23/Oct/2023:17:35:59 +0000] "GET /login?Username=kendall&Password=tav123 HTTP/1.1" 404 144 "-" "PostmanRuntime/7.34.0"
+::1 - - [23/Oct/2023:18:26:32 +0000] "GET /login?Username=kendall&Password=tav123 HTTP/1.1" 404 144 "-" "PostmanRuntime/7.34.0"
