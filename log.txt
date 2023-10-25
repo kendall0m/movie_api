@@ -217,3 +217,4 @@ Timestamp: Wed Aug 23 2023 10:34:30 GMT-0400 (Eastern Daylight Time)
 ::1 - - [23/Oct/2023:17:34:44 +0000] "GET /login?Username=kendall&Password=tav123 HTTP/1.1" 404 144 "-" "PostmanRuntime/7.34.0"
 ::1 - - [23/Oct/2023:17:35:59 +0000] "GET /login?Username=kendall&Password=tav123 HTTP/1.1" 404 144 "-" "PostmanRuntime/7.34.0"
 ::1 - - [23/Oct/2023:18:26:32 +0000] "GET /login?Username=kendall&Password=tav123 HTTP/1.1" 404 144 "-" "PostmanRuntime/7.34.0"
+::1 - - [25/Oct/2023:14:15:46 +0000] "POST /newuser HTTP/1.1" 404 147 "-" "PostmanRuntime/7.34.0"
