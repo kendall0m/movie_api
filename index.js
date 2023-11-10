@@ -28,7 +28,8 @@ const { check, validationResult } = require('express-validator');
 
 
 //Connecting to my database using the databases found via mongosh sho dbs() command
-mongoose.connect('mongodb://127.0.0.1/test', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://127.0.0.1/test', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(morgan('common'));
 
