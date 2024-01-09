@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 
 const cors = require('cors');
 // CORS
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://mymovie-api.netlify.app'];
+let allowedOrigins = ['Access-Control-Allow-Origin: *'];
 //allow specific set of origins to access your API
 app.use(cors({
     origin: (origin, callback) => {
