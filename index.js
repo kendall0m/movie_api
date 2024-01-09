@@ -53,7 +53,7 @@ app.use(morgan('common'));
 
 //Older API calls from lesson 2.5
 app.get("/", (req, res) => {
-    let responseText = "Hello world! Welcome to my Movie API!?";
+    let responseText = "Hello world! Welcome to my Movie API!";
     res.send(responseText);
 });
 
