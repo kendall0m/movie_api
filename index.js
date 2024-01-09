@@ -22,9 +22,13 @@ app.use(bodyParser.json());
 
 const cors = require('cors');
 // CORS
-let allowedOrigins = ['Access-Control-Allow-Origin: *'];
 //allow specific set of origins to access your API
-app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+})
 
 let auth = require('./auth')(app);
 
