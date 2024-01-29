@@ -20,17 +20,17 @@ const bodyParser = require ('body-parser');
 
 app.use(bodyParser.json());
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://kendallsmovies-85beffe7056c.herokuapp.com'];
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-            let message = 'The CORS policy for this application doesn\'t allow access from origin' + origin;
-            return callback(new Error(message), false);
-        }
-      return callback(null, true);
-      }  
-    }));
+// let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://kendallsmovies-85beffe7056c.herokuapp.com', 'https://kendallsmovies-85beffe7056c.herokuapp.com/movies'];
+// app.use(cors({
+//     origin: (origin, callback) => {
+//         if (!origin) return callback(null, true);
+//         if (allowedOrigins.indexOf(origin) === -1) {
+//             let message = 'The CORS policy for this application doesn\'t allow access from origin' + origin;
+//             return callback(new Error(message), false);
+//         }
+//       return callback(null, true);
+//       }  
+//     }));
 // const cors = require('cors');
 // CORS
 
