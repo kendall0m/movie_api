@@ -20,20 +20,33 @@ const bodyParser = require ('body-parser');
 
 app.use(bodyParser.json());
 
-const cors = require('cors');
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://kendallsmovies-85beffe7056c.herokuapp.com'];
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            let message = 'The CORS policy for this application doesn\'t allow access from origin' + origin;
+            return callback(new Error(message), false);
+        }
+      return callback(null, true);
+      }  
+    }));
+// const cors = require('cors');
 // CORS
 
 //allow specific set of origins to access your API
-app.use(cors());
+// app.use(cors());
 
-app.use(function (req, res, next) {
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
 
-  // Pass to next layer of middleware
-  next();
-});
+// app.use(function (req, res, next) {
+
+//   // Website you wish to allow to connect
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+
+//   // Pass to next layer of middleware
+//   next();
+// });
 
 let auth = require('./auth')(app);
 
